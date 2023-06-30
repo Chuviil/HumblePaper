@@ -12,7 +12,7 @@ public class ReceptorPlace : MonoBehaviour
         if (deliveryObject.name == requestedObject)
         {
             Debug.Log("Correct delivery object placed!");
-            // Perform desired action when correct object is placed
+            Destroy(other.gameObject);
         }
         else
         {
