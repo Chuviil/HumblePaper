@@ -1,23 +1,44 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class ReceptorPlace : MonoBehaviour
 {
-    public string requestedObject;
+    public float intervaloDeRevision = 120f;
+    public List<String> objetosPosibles = new List<String>(){"Guitar", "Popcorn", "Plant"};
+
+    [SerializeField] private string _objetoPedido;
+    
+    private void Start()
+    {
+        InvokeRepeating("RevisarSolicitado", 0f, intervaloDeRevision);
+    }
+
+    public void RevisarSolicitado()
+    {
+        if (string.IsNullOrEmpty(_objetoPedido))
+        {
+            int indice = Random.Range(0, objetosPosibles.Count);
+            _objetoPedido = objetosPosibles[indice];
+            Debug.Log("Se asigno una entrega: " + _objetoPedido);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         var deliveryObject = other.GetComponent<DeliveryObject>();
         if (deliveryObject == null) return;
-        if (deliveryObject.name == requestedObject)
+        if (deliveryObject.name == _objetoPedido)
         {
-            Debug.Log("Correct delivery object placed!");
+            _objetoPedido = "";
+            Debug.Log("Entrega correcta de " + _objetoPedido);
             Destroy(other.gameObject);
         }
         else
         {
-            Debug.Log("Incorrect delivery object placed!");
-            // Perform desired action when incorrect object is placed
+            Debug.Log("Item entregado no es correcto!");
         }
     }
 }
