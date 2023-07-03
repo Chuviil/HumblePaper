@@ -5,7 +5,10 @@ using Random = UnityEngine.Random;
 public class MoneySource : MonoBehaviour
 {
     [SerializeField] private Shop shop;
+    public int maxRandom = 200;
+    public int minRandom = 80;
     public double value;
+    public AudioClip moneySound;
 
     private void Awake()
     {
@@ -14,12 +17,17 @@ public class MoneySource : MonoBehaviour
 
     private void Start()
     {
-        value = Random.Range(80, 200);
+        value = Random.Range(minRandom, maxRandom);
     }
 
     public void DestroyAndAdd()
     {
+        GameObject soundObject = new GameObject("Money Sound");
+        AudioSource soundSource = soundObject.AddComponent<AudioSource>();
+        soundSource.clip = moneySound;
+        soundSource.Play();
         shop.AddMoney(value);
+        Destroy(soundObject, soundSource.clip.length);
         Destroy(gameObject);
     }
 }

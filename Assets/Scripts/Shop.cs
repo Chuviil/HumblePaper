@@ -18,6 +18,14 @@ public class Shop : MonoBehaviour
         money += amount;
         UpdateMoneyDisplays();
     }
+    
+    public Boolean ReduceMoney(double amount)
+    {
+        if (money - amount < 0) return false;
+        money -= amount;
+        UpdateMoneyDisplays();
+        return true;
+    }
 
     public void UpdateMoneyDisplays()
     {

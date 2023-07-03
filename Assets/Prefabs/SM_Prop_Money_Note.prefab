@@ -212,7 +212,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2fd08de76faac0d46a95ff13ae5d85f2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 440836c5c6d3ed542bb9cba0d2918700, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -311,7 +311,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 0}
+  maxRandom: 120
+  minRandom: 40
   value: 0
+  soundPlayer: {fileID: -962032571304344456}
+  moneySound: {fileID: 8300000, guid: e0d59263b8ac73b42b594d3c2a45ee61, type: 3}
 --- !u!114 &3963480099433600255
 MonoBehaviour:
   m_ObjectHideFlags: 0
