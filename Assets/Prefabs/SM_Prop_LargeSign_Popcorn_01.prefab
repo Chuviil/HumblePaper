@@ -198,4 +198,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54e7793a7768484cb5e3ba2ab819b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Popcorn
+  nombre: Popcorn

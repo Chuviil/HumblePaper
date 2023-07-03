@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class ReceptorPlace : MonoBehaviour
 {
-    public float intervaloDeRevision = 120f;
+    public float intervaloDeRevision = 60f;
     public List<String> objetosPosibles = new List<String>() { "Guitar", "Popcorn", "Plant" };
     public GameObject explosionPrefab;
+    public TMP_Text displayText;
 
     [SerializeField] private string _objetoPedido;
 
@@ -24,17 +25,19 @@ public class ReceptorPlace : MonoBehaviour
             int indice = Random.Range(0, objetosPosibles.Count);
             _objetoPedido = objetosPosibles[indice];
             Debug.Log("Se asigno una entrega: " + _objetoPedido);
+            displayText.text = _objetoPedido;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         var deliveryObject = other.GetComponent<DeliveryObject>();
-        if (deliveryObject == null) return;
-        if (deliveryObject.name == _objetoPedido)
+        if (string.IsNullOrEmpty(_objetoPedido)) return;
+        if (deliveryObject.nombre == _objetoPedido)
         {
-            _objetoPedido = "";
             Debug.Log("Entrega correcta de " + _objetoPedido);
+            _objetoPedido = "";
+            displayText.text = _objetoPedido;
             Destroy(other.gameObject);
         }
         else
