@@ -28,6 +28,12 @@ public class ReceptorPlace : MonoBehaviour
             Debug.Log("Se asigno una entrega: " + _objetoPedido);
             displayText.text = _objetoPedido;
         }
+        else
+        {
+            _objetoPedido = "Failed!";
+            displayText.text = _objetoPedido;
+            displayText.color = Color.red;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
