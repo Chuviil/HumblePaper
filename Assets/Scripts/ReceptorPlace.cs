@@ -7,10 +7,11 @@ using Random = UnityEngine.Random;
 public class ReceptorPlace : MonoBehaviour
 {
     public float intervaloDeRevision = 120f;
-    public List<String> objetosPosibles = new List<String>(){"Guitar", "Popcorn", "Plant"};
+    public List<String> objetosPosibles = new List<String>() { "Guitar", "Popcorn", "Plant" };
+    public GameObject explosionPrefab;
 
     [SerializeField] private string _objetoPedido;
-    
+
     private void Start()
     {
         InvokeRepeating("RevisarSolicitado", 0f, intervaloDeRevision);
@@ -39,6 +40,9 @@ public class ReceptorPlace : MonoBehaviour
         else
         {
             Debug.Log("Item entregado no es correcto!");
+            GameObject explosionP = Instantiate(explosionPrefab, other.transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+            Destroy(explosionP, explosionPrefab.GetComponent<ParticleSystem>().main.duration);
         }
     }
 }

@@ -179,6 +179,8 @@ MonoBehaviour:
   - Guitar
   - Popcorn
   - Plant
+  explosionPrefab: {fileID: 7714718347725807903, guid: f4a89497a4ec99b418810a86476789cc,
+    type: 3}
   _objetoPedido: 
 --- !u!65 &1071213663916598601
 BoxCollider:
