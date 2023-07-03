@@ -184,6 +184,8 @@ MonoBehaviour:
     type: 3}
   displayText: {fileID: 7714314444095234528}
   _objetoPedido: 
+  moneyPrefab: {fileID: 1697301488317102, guid: 3d8bf62541189334291a8f5f1fd212e8,
+    type: 3}
 --- !u!65 &1071213663916598601
 BoxCollider:
   m_ObjectHideFlags: 0

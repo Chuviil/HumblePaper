@@ -12,6 +12,7 @@ public class ReceptorPlace : MonoBehaviour
     public TMP_Text displayText;
 
     [SerializeField] private string _objetoPedido;
+    [SerializeField] private GameObject moneyPrefab;
 
     private void Start()
     {
@@ -32,12 +33,14 @@ public class ReceptorPlace : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var deliveryObject = other.GetComponent<DeliveryObject>();
+        if (deliveryObject == null) return;
         if (string.IsNullOrEmpty(_objetoPedido)) return;
         if (deliveryObject.nombre == _objetoPedido)
         {
             Debug.Log("Entrega correcta de " + _objetoPedido);
             _objetoPedido = "";
             displayText.text = _objetoPedido;
+            if (moneyPrefab != null) Instantiate(moneyPrefab, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
         }
         else
