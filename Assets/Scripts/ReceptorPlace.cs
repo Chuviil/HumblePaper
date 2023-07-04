@@ -7,7 +7,10 @@ using TMPro;
 public class ReceptorPlace : MonoBehaviour
 {
     public float intervaloDeRevision = 60f;
-    public List<String> objetosPosibles = new List<String>() { "Guitar", "Popcorn", "Plant" };
+
+    public List<String> objetosPosibles = new List<String>()
+        { "Guitar", "Popcorn", "Plant", "Book", "Candle", "Brush", "Fire Extinguisher" };
+
     public GameObject explosionPrefab;
     public TMP_Text displayText;
 

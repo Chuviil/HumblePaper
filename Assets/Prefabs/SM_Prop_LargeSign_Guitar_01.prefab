@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 609151685280512426}
   - component: {fileID: 609151685280512428}
   - component: {fileID: 609151685280512431}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Prop_LargeSign_Guitar_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
